@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>Crystal Collector Game</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<div class="row">
+  <div class="col-lg-4">
+    <header>Crystals Collector Challenger!</header>
+  </div>
+</div>
+<body>
+
+  <br>
+  <div class="row">
+    <div class="col-lg-6">
+    <br>
+    <br>
+    <div id="p-container">
+      <p>You will be given a random number at the start of the game!</p>
+        <br>
+        <p>There are four crystals below. By clicking on a crystal you add an unspecified number of points to your total score.</p>
+        <br>
+        <p>You win the game by matching your total score to a random number.</p>
+        <br>
+        <p>You lose the game if your total score goes above the random number.</p>
+        <br>
+        <p>The value of each crystal is hidden... until you click it!</p>
+        <br>
+        <p>Each time the game starts the value of the crystals changes!</p>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <!-- This is where we'll put our target points -->
+  <div class="row">
+    <div class="col-lg-4">
+      <div id="points-container"></div>
+    </div>
+  </div>
+
+  <!-- This is where we'll put our scoreboard  -->
+  <div class="row">
+    <div class="col-lg-4">
+      <div id="scoreboard-container"></div>
+    </div>
+  </div>
+
+  <!-- This is where our buttons will be contained -->
+
+      <div id="buttons">
+        <div id="button-one"></div>
+        <div id="button-two"></div>
+        <div id="button-three"></div>
+        <div id="button-four"></div>
+      </div>
+
+
+  <!-- This is where our final score will be contained -->
+  <div id="total-score"></div>
+
+  <!-- BUTTON JAVASCRIPT -->
+
+  <script type="text/javascript">
+
+    // This gives the variable targetNumber a random value between 50-150
+  var targetNumber = Math.floor((Math.random() * 100) + 20);
+  console.log(targetNumber);
+    // This is the starting point players begin at.
+  var counter = 0;
+
+  // This is where each button's value is decided. This is where the magic happens.
+  const buttonOne = Math.floor((Math.random() * 20) + 1);
+  const buttonTwo = Math.floor((Math.random() * 20) + 1);
+  const buttonThree = Math.floor((Math.random() * 20) + 1);
+  const buttonFour = Math.floor((Math.random() * 20) + 1);
+
+
+// This is my button one script. It's not pretty. I played with it a lot. This is what I got!
+  var buttonOneImg = $("<img>");
+    buttonOneImg.addClass("crystal-image")
+    buttonOneImg.attr("src", "https://images-na.ssl-images-amazon.com/images/I/51snWRfynML._US500_.jpg");
+    $("#button-one").append(buttonOneImg);
+
+    // Here's our first button.
+  $("#button-one").on("click", function() {
+    // const buttonOne = Math.floor((Math.random() * 20) + 1); --- It occurred to me that that my variable, the random number, needs to be declared OUTside the button function. Otherwise, it generates a new random number each time. I spent about a half hour on that mistake.
+    counter += buttonOne;
+    console.log(counter);
+
+    if (counter === targetNumber) {
+      alert("YOU WIN!");
+
+    }
+
+    else if (counter >= targetNumber) {
+      alert("You lose!!");
+    }
+  });
+
+// Button Two
+  var buttonTwoImg = $("<img>");
+    buttonTwoImg.addClass("crystal-image");
+    buttonTwoImg.attr("src", "http://mysticinvestigations.com/paranormal/wp-content/uploads/2017/03/God-Crystal.jpg");
+    $("#button-two").append(buttonTwoImg);
+
+  $("#button-two").on("click", function() {
+    counter += buttonTwo;
+    console.log(counter);
+
+    if (counter === targetNumber) {
+      alert("YOU WIN!");
+     reset();
+    }
+
+    else if (counter >= targetNumber) {
+      alert("You lose!!");
+     reset();
+    }
+  });
+// Button Three
+  var buttonThreeImg = $("<img>");
+  buttonThreeImg.addClass("crystal-image");
+  buttonThreeImg.attr("src", "http://images.nintendolife.com/games/3ds-eshop/pokemon_crystal_version/cover_large.jpg");
+  $("#button-three").append(buttonThreeImg);
+
+  $("#button-three").on("click", function() {
+    counter += buttonThree;
+    console.log(counter);
+
+    if (counter === targetNumber) {
+      alert("YOU WIN!");
+     reset();
+    }
+
+    else if (counter >= targetNumber) {
+      alert("You lose!!");
+     reset();
+    }
+  });
+// Button Four
+  var buttonFourImg = $("<img>");
+  buttonFourImg.addClass("crystal-image");
+  buttonFourImg.attr("src", "http://d1k217qge1tz5p.cloudfront.net/img/Items/4000/3265.jpg");
+  $("#button-four").append(buttonFourImg);
+
+$("#button-four").on("click", function() {
+  counter += buttonFour;
+  console.log(counter);
+
+  if (counter === targetNumber) {
+    alert("YOU WIN!");
+    reset();
+  }
+
+  else if (counter >= targetNumber) {
+    alert("You lose!!");
+    reset();
+  }
+});
+
+  $('#points-container').text(targetNumber);
+  $('#scoreboard-container').text(counter);
+
+  function reset() {
+    targetNumber = Math.floor(Math.random() * 100 + 20);
+    console.log(targetNumber)
+    $('#points-container').text(targetNumber);
+    buttonOne = Math.floor(Math.random() * 20 + 1);
+    buttonTwo = Math.floor(Math.random() * 20 + 1);
+    buttonThree = Math.floor(Math.random() * 20 + 1);
+    buttonFour = Math.floor(Math.random() * 20 + 1);
+    counter = 0;
+    $('#scoreboard-container').text(counter);
+  }
+
+  </script>
+
+
+</body>
+</html>

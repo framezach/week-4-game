@@ -1,0 +1,68 @@
+header {
+  background-color: rgb(255, 201, 102);
+  width: 100%;
+  margin: 5px;
+  padding: 0 auto;
+  clear: both;
+  float: left;
+  text-align: center;
+  font-size: 250%
+}
+
+#p-container {
+  background-color: rgb(202, 242, 255);
+  width:100%;
+  clear: both;
+  float: left;
+  text-align: justify;
+  font-size: 175%;
+}
+
+body {
+  background-image: url("https://i.imgur.com/eWtfMME.png");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.buttonImg {
+      width: 150px;
+      height: 150px;
+    }
+
+#buttons {
+  background-color: rebeccapurple;
+  width: 100%;
+  clear: both;
+  float: left;
+  text-align: center;
+}
+
+.crystal-image {
+  width: 125px;
+  height: 125px;
+  float: left;
+  margin: 2px;
+}
+
+#points-container {
+  width: 100%;
+  clear: both;
+  float: left;
+  text-align: center;
+  background-color: rgb(15, 255, 27);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 175%;
+  margin: 5px;
+}
+
+#scoreboard-container {
+  width: 100%;
+  margin: 5px;
+  clear: both;
+  float: left;
+  text-align: center;
+  background-color: rgb(160, 11, 11);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 175%;
+  color: white;
+}
